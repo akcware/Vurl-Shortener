@@ -39,8 +39,7 @@ export default {
     };
   },
   mounted() {
-    console.log(nuxtStorage.localStorage.getData("urls"));
-    this.urls = nuxtStorage.localStorage.getData("urls");
+    this.urls = nuxtStorage.localStorage.getData("urls") || [];
   },
   methods: {
     deleteUrl($event) {
@@ -62,7 +61,7 @@ export default {
         urlModel.alias = Math.floor(Math.random * 10000 + 1);
 
       axios
-        .post("http://localhost:5000/api/add_url", urlModel, axiosConfig)
+        .post("/api/add_url", urlModel, axiosConfig)
         .then((res) => {
           if (res.data.success) {
             this.urls.push(urlModel);

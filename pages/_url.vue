@@ -18,11 +18,7 @@ export default {
     let redirect_url;
 
     axios
-      .post(
-        "http://localhost:5000/api/get_redirect_url",
-        { alias: alias },
-        axiosConfig
-      )
+      .post("/api/get_redirect_url", { alias: alias }, axiosConfig)
       .then((res) => {
         console.log(res);
         if (res.data.redirect_url == null || !res.data.success)

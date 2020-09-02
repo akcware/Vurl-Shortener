@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const router = express.Router();
 
 // router.use(bodyParser.json());
@@ -15,6 +14,8 @@ const Url = require("../models/url");
  */
 
 router.post("/add_url", async (req, res) => {
+  console.log(req.body);
+
   let alias = req.body.alias;
   const urlRedirect = req.body.urlRedirect;
   const enabled = req.body.enabled;
@@ -30,10 +31,10 @@ router.post("/add_url", async (req, res) => {
   const url = new Url({
     alias: alias,
     urlRedirect: urlRedirect,
-    enabled: enabled || true,
+    enabled: enabled || true
   });
 
-  return url.save((err) => {
+  return url.save(err => {
     if (err) console.error(err);
 
     if (err) return res.send({ success: false, data: url.toJSON(), err: err });
@@ -69,7 +70,7 @@ router.post("/add_visitor", (req, res) => {
     if (!url) return res.send({ success: false, err: "URL_NOT_EXISTS" });
     else if (url) {
       url.visitor++;
-      return url.save((err) => {
+      return url.save(err => {
         return res.send({ success: false, err: err });
       });
     } else if (err) return res.send({ success: false, err: err });
