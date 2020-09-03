@@ -27,7 +27,7 @@ export default {
         redirect_url = res.data.redirect_url;
 
         return axios.post(
-          "http://localhost:5000/api/add_visitor",
+          "/api/add_visitor",
           { alias: alias },
           axiosConfig
         );
