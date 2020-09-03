@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       // path: $route.toPath(),
-      currentPath: "http://localhost:3000/",
+      currentPath: "https://vurl-shortener.herokuapp.com/",
       copiedSnackbar: false,
       deleteUrlDialog: false,
     };
